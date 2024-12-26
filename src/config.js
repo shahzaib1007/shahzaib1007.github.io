@@ -18,6 +18,10 @@ module.exports = {
       name: 'Linkedin',
       url: 'https://www.linkedin.com/in/shahzaib-k1007',
     },
+    {
+      name: 'Google Scholar',
+      url: 'https://scholar.google.com/citations?user=eVEMjKQAAAAJ&hl=en&oi=ao',
+    },
     // {
     //   name: 'Codepen',
     //   url: 'https://codepen.io/bchiang7',
