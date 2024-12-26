@@ -22,6 +22,10 @@ module.exports = {
       name: 'Google Scholar',
       url: 'https://scholar.google.com/citations?user=eVEMjKQAAAAJ&hl=en&oi=ao',
     },
+    {
+      name: 'ORCID',
+      url: 'https://orcid.org/0000-0002-0851-0385',
+    },
     // {
     //   name: 'Codepen',
     //   url: 'https://codepen.io/bchiang7',
