@@ -100,7 +100,7 @@ const StyledPic = styled.div`
     &:before {
       top: 0;
       left: 0;
-      background-color: var(--navy);
+      background-color: var(--pink);
       mix-blend-mode: screen;
     }
 
@@ -126,12 +126,14 @@ const About = () => {
   }, []);
 
   const skills = [
+    'Satellite Remote Sensing',
     'Water Resources Management',
     'Irrigation',
     'Evapotranspiration',
     'Climate',
     'Hydrological Modelling',
-    'Networks',
+    'Networks in Water Resources Management',
+    'Cloud Computing',
   ];
 
   return (
@@ -143,8 +145,8 @@ const About = () => {
           <div>
             <p>
               I study Earth's surface water resources and explore sustainable, and efficient ways in
-              applications of these water resources. My work leverages satellite remote sensing and
-              modeling to develop practical tools that bridge the gap between research and
+              the applications of these water resources. My work leverages satellite remote sensing
+              and modeling to develop practical tools that bridge the gap between research and
               real-world applications!
             </p>
             <p>Here are a few topics that interests me:</p>
