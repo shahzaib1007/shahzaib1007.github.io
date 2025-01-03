@@ -17,7 +17,8 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
-  background-color: rgba(10, 25, 47, 0.85);
+  // background-color: rgba(10, 25, 47, 0.85);
+  background-color: var(--black); // Change background color of the navigation bar
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
@@ -38,7 +39,10 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
-        background-color: rgba(10, 25, 47, 0.85);
+        // background-color: rgba(10, 25, 47, 0.85);
+        background-color: var(
+          --black
+        ); // Change background color of the navigation bar when scrolling
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
       `};
 
@@ -92,7 +96,7 @@ const StyledNav = styled.nav`
             transition: var(--transition);
           }
           polygon {
-            fill: var(--navy);
+            fill: var(--black);
           }
         }
       }
