@@ -1,5 +1,5 @@
 ---
-date: '2015-12-21'
+# date: '2015-12-21'
 title: 'Creative Technologist Co-op'
 company: 'MullenLowe'
 location: 'Boston, MA'
