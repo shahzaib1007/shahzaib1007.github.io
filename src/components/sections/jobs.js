@@ -7,7 +7,7 @@ import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
-const StyledVisionSection = styled.section`
+const StyledJobsSection = styled.section`
   max-width: 700px;
 
   .inner {
@@ -164,11 +164,11 @@ const StyledTabPanel = styled.div`
   }
 `;
 
-const Vision = () => {
+const Jobs = () => {
   const data = useStaticQuery(graphql`
     query {
-      vision: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/vision/" } }
+      jobs: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
         sort: { fields: [frontmatter___date], order: DESC }
       ) {
         edges {
@@ -187,7 +187,7 @@ const Vision = () => {
     }
   `);
 
-  const visionData = data.vision.edges;
+  const jobsData = data.jobs.edges;
 
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
@@ -243,13 +243,13 @@ const Vision = () => {
   };
 
   return (
-    <StyledVisionSection id="vision" ref={revealContainer}>
+    <StyledJobsSection id="jobs" ref={revealContainer}>
       <h2 className="numbered-heading">My Recent Projects</h2>
 
       <div className="inner">
         <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
-          {visionData &&
-            visionData.map(({ node }, i) => {
+          {jobsData &&
+            jobsData.map(({ node }, i) => {
               const { company } = node.frontmatter;
               return (
                 <StyledTabButton
@@ -270,8 +270,8 @@ const Vision = () => {
         </StyledTabList>
 
         <StyledTabPanels>
-          {visionData &&
-            visionData.map(({ node }, i) => {
+          {jobsData &&
+            jobsData.map(({ node }, i) => {
               const { frontmatter, html } = node;
               const { title, url, company, range } = frontmatter;
 
@@ -303,8 +303,8 @@ const Vision = () => {
             })}
         </StyledTabPanels>
       </div>
-    </StyledVisionSection>
+    </StyledJobsSection>
   );
 };
 
-export default Vision;
+export default Jobs;

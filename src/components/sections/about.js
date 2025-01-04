@@ -136,6 +136,10 @@ const About = () => {
     'Cloud Computing',
   ];
 
+  // const education = ['Ph.D in Civil and Environmental Engineering, University of Washington, 2025 (expected)',
+  //   'M.S. in Civil and Environmental Engineering, University of Washington, 2022',
+  //   'B.Tech. in Civil Engineering (Honors), IIT Gandhinagar, 2021'];
+
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
       <h2 className="numbered-heading">About Me</h2>
@@ -148,6 +152,20 @@ const About = () => {
               the applications of these water resources. My work leverages satellite remote sensing
               and modeling to develop practical tools that bridge the gap between research and
               real-world applications!
+            </p>
+            <p>
+              <strong>Education</strong>
+              <ul>
+                <li>
+                  Ph.D in Civil and Environmental Engineering, University of Washington, 2025
+                  (Expected)
+                </li>
+                <li>M.S. in Civil and Environmental Engineering, University of Washington, 2022</li>
+                <li>B.Tech. in Civil Engineering (Honors), IIT Gandhinagar, 2021</li>
+              </ul>
+              {/* <ul className="skills-list">
+              {education && education.map((edu, i) => <li key={i}>{edu}</li>)}
+              </ul> */}
             </p>
             <p>Here are a few topics that interests me:</p>
           </div>

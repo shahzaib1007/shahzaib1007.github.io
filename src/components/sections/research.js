@@ -7,12 +7,12 @@ import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
-const StyledJobsSection = styled.section`
+const StyledResearchSection = styled.section`
   max-width: 700px;
 
   .inner {
     display: flex;
-
+    margin-top: 15px; // padding between tab and para
     @media (max-width: 600px) {
       display: block;
     }
@@ -21,6 +21,12 @@ const StyledJobsSection = styled.section`
     @media (min-width: 700px) {
       min-height: 340px;
     }
+  }
+  margin-top: -100px;
+  // margin-left: -4px;
+  .vision-text {
+    margin-bottom: 10px; /* Small gap after the 'my vision' part */
+    margin-top: -30px;
   }
 `;
 
@@ -164,11 +170,11 @@ const StyledTabPanel = styled.div`
   }
 `;
 
-const Jobs = () => {
+const Research = () => {
   const data = useStaticQuery(graphql`
     query {
-      jobs: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
+      research: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/research/" } }
         sort: { fields: [frontmatter___date], order: DESC }
       ) {
         edges {
@@ -187,7 +193,7 @@ const Jobs = () => {
     }
   `);
 
-  const jobsData = data.jobs.edges;
+  const researchData = data.research.edges;
 
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
@@ -243,13 +249,23 @@ const Jobs = () => {
   };
 
   return (
-    <StyledJobsSection id="jobs" ref={revealContainer}>
-      <h2 className="numbered-heading">My Recent Projects</h2>
-
+    <StyledResearchSection id="research" ref={revealContainer}>
+      <h2 className="numbered-heading">My Vision</h2>
+      <p className="vision-text">
+        Imagine a world where water cycle data is democratized, providing every
+        individual—regardless of background, nationality, or status—with equitable access to
+        actionable insights about water resources. This information empowers people to make informed
+        decisions, manage resources sustainably, and contribute to a balanced future for generations
+        and nature. Equity-based access to water resources isn’t just essential for individual
+        well-being; it is critical for a nation's prosperity and sustainability. Water, as a
+        resource, has the power to unite or divide, and its fair management is key to preventing
+        conflict and fostering harmony (see this video). This is the vision I tirelessly pursue,
+        striving step by step to turn it into reality.
+      </p>
       <div className="inner">
-        <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
-          {jobsData &&
-            jobsData.map(({ node }, i) => {
+        <StyledTabList role="tablist" aria-label="Research tabs" onKeyDown={e => onKeyDown(e)}>
+          {researchData &&
+            researchData.map(({ node }, i) => {
               const { company } = node.frontmatter;
               return (
                 <StyledTabButton
@@ -270,8 +286,8 @@ const Jobs = () => {
         </StyledTabList>
 
         <StyledTabPanels>
-          {jobsData &&
-            jobsData.map(({ node }, i) => {
+          {researchData &&
+            researchData.map(({ node }, i) => {
               const { frontmatter, html } = node;
               const { title, url, company, range } = frontmatter;
 
@@ -303,8 +319,8 @@ const Jobs = () => {
             })}
         </StyledTabPanels>
       </div>
-    </StyledJobsSection>
+    </StyledResearchSection>
   );
 };
 
-export default Jobs;
+export default Research;
