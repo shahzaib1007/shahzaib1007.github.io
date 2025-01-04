@@ -23,7 +23,7 @@ const StyledResearchSection = styled.section`
     }
   }
   margin-top: -100px;
-  // margin-left: -4px;
+  margin-left: auto;
   .vision-text {
     margin-bottom: 10px; /* Small gap after the 'my vision' part */
     margin-top: -30px;
