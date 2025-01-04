@@ -1,15 +1,15 @@
 ---
 date: '1'
-title: 'Halcyon Theme'
-cover: './halcyon.png'
-github: 'https://github.com/bchiang7/halcyon-site'
-external: 'https://halcyon-theme.netlify.com/'
+title: 'sD.R.I.P.S'
+cover: './sDRIPS.png'
+github: 'https://github.com/shahzaib1007/sDRIPS'
+external: 'https://github.com/shahzaib1007/sDRIPS'
 tech:
-  - VS Code
-  - Sublime Text
-  - Atom
-  - iTerm2
-  - Hyper
+  - Canals
+  - Irrigation
+  - Advisory
+  - SEBAL
+  - Penman-Motetih
 ---
 
-A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=brittanychiang.halcyon-vscode), [Package Control](https://packagecontrol.io/packages/Halcyon%20Theme), [Atom Package Manager](https://atom.io/themes/halcyon-syntax), and [npm](https://www.npmjs.com/package/hyper-halcyon-theme).
+A scalable open-source tool designed to guide surface water canal operators in determining the accurate water supply needed for each region based on actual crop water requirements. Currently in discussions to operationalize this system with the [Bangladesh Water Developement Board](https://www.bwdb.gov.bd/) to to support Teesta Barrage Irrigation Project canal operators.

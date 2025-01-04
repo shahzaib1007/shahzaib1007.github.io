@@ -322,7 +322,6 @@ const Featured = () => {
               tech
               github
               external
-              cta
             }
             html
           }
@@ -330,7 +329,7 @@ const Featured = () => {
       }
     }
   `);
-
+  // removed cta from the frontmatter [tech github external]
   const featuredProjects = data.featured.edges.filter(({ node }) => node);
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
