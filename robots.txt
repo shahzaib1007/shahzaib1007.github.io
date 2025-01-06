@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://shahzaib1007.github.io/sitemap-index.xml
+Host: https://shahzaib1007.github.io
