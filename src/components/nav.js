@@ -154,7 +154,20 @@ const StyledLinks = styled.div`
   }
 `;
 
-const Nav = ({ isHome }) => {
+const StyledThemeToggle = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  font-size: var(--fz-md);
+  margin-left: 20px;
+
+  &:hover {
+    color: var(--green);
+  }
+`;
+
+const Nav = ({ isHome, toggleTheme }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
@@ -232,6 +245,7 @@ const Nav = ({ isHome }) => {
                   ))}
               </ol>
               <div>{ResumeLink}</div>
+              <StyledThemeToggle onClick={toggleTheme}>🌙 / ☀️</StyledThemeToggle>
             </StyledLinks>
 
             <Menu />
@@ -270,6 +284,7 @@ const Nav = ({ isHome }) => {
                   </CSSTransition>
                 )}
               </TransitionGroup>
+              <StyledThemeToggle onClick={toggleTheme}>🌙 / ☀️</StyledThemeToggle>
             </StyledLinks>
 
             <TransitionGroup component={null}>
@@ -288,6 +303,7 @@ const Nav = ({ isHome }) => {
 
 Nav.propTypes = {
   isHome: PropTypes.bool,
+  toggleTheme: PropTypes.func.isRequired, // Ensure toggleTheme is passed
 };
 
 export default Nav;
