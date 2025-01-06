@@ -35,13 +35,19 @@ const StyledLinkWrapper = styled.div`
   }
 `;
 
-const Email = ({ isHome }) => (
-  <Side isHome={isHome} orientation="right">
-    <StyledLinkWrapper>
-      <a href={`mailto:${email}`}>{email}</a>
-    </StyledLinkWrapper>
-  </Side>
-);
+const Email = ({ isHome }) => {
+  const emailBody =
+    'Hi there,\n\nI\'m glad you stopped by! To prevent bots from spamming my inbox, I\'ve added \'[AT]\' to my email address. Please replace \'[AT]\' with \'@\' when contacting me.\n\nLooking forward to hearing from you!';
+  const mailtoLink = `mailto:${email}?body=${encodeURIComponent(emailBody)}`;
+
+  return (
+    <Side isHome={isHome} orientation="right">
+      <StyledLinkWrapper>
+        <a href={mailtoLink}>{email}</a>
+      </StyledLinkWrapper>
+    </Side>
+  );
+};
 
 Email.propTypes = {
   isHome: PropTypes.bool,
