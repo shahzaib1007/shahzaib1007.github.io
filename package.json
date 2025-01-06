@@ -1,20 +1,21 @@
 {
-  "name": "v4",
-  "description": "Personal Website V4",
+  "name": "shahzaib1007.github.io",
+  "description": "Personal Website of Shahzaib Khan",
   "version": "1.0.0",
   "author": "Shahzaib Khan <khan.shahzaib1007@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shahzaib1007/v4"
+    "url": "https://github.com/shahzaib1007/shahzaib1007.github.io"
   },
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
+  "license": "GNU",
   "browserslist": "> 0.25%, not dead",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

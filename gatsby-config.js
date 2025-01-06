@@ -6,6 +6,7 @@ module.exports = {
     description:
       'Shahzaib Khan is a hydrologist who specializes in managing water resources through satellite remote Sensing.',
     siteUrl: 'https://shahzaib1007.github.io/', // No trailing slash allowed!
+    pathPrefix: '/shahzaib1007.github.io', // Add this
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '',
   },
