@@ -51,11 +51,25 @@ module.exports = {
         path: `${__dirname}/content/posts`,
       },
     },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `projects`,
+    //     path: `${__dirname}/content/projects`,
+    //   },
+    // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `publications`,
+        path: `${__dirname}/content/publications`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `projects`,
-        path: `${__dirname}/content/projects`,
+        path: `${__dirname}/content/conferences`,
       },
     },
     {

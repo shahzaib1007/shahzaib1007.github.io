@@ -6,12 +6,17 @@ import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 // import { Layout } from '@components';
-import { Icon } from '@components/icons';
+// import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledTableContainer = styled.div`
   margin: 30px auto;
-
+  .center-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
   @media (max-width: 768px) {
     margin: 50px -10px;
   }
@@ -134,11 +139,11 @@ const StyledTableContainer = styled.div`
   }
 `;
 
-const Publication = () => {
+const Conference = () => {
   const data = useStaticQuery(graphql`
     {
       allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/publications/" } }
+        filter: { fileAbsolutePath: { regex: "/content/conferences/" } }
         sort: { fields: [frontmatter___date], order: DESC }
       ) {
         edges {
@@ -146,8 +151,7 @@ const Publication = () => {
             frontmatter {
               date
               title
-              github
-              external
+              conference_type
             }
           }
         }
@@ -175,14 +179,17 @@ const Publication = () => {
     setRowsToShow(Number(e.target.value));
   };
 
-  const formatTitle = title =>
-    // Use replace to wrap "S.Khan" in bold
-    title.replace(/S\. Khan/g, '<span class="bold">S. Khan</span>');
+  const formatTitle = (title, conference_type) =>
+    // Use replace to wrap "S. Khan" in bold and append conference_type with styling
+    `${title.replace(/S\. Khan/g, '<span class="bold">S. Khan</span>')} 
+    <span class="bold">${conference_type}</span>`;
+
   return (
     <StyledTableContainer ref={revealTable}>
-      <h2 id="publication" className="numbered-heading">
-        Publications
-      </h2>
+      {/* <h2 ref={revealTitle} style={{ color: 'var(--white)' }}>Conferences and Talks</h2>  */}
+      <div className="center-page">
+        <h2 ref={revealTitle}>Conferences and Talks</h2>
+      </div>
       <div className="controls">
         <label htmlFor="rows">Show rows: </label>
         <select id="rows" value={rowsToShow} onChange={handleRowsChange}>
@@ -199,18 +206,20 @@ const Publication = () => {
             <th>Title</th>
             {/* <th className="hide-on-mobile">Made at</th>
             <th className="hide-on-mobile">Built with</th> */}
-            <th>Links</th>
+            {/* <th>Links</th> */}
           </tr>
         </thead>
         <tbody>
           {projects.slice(0, rowsToShow).map(({ node }, i) => {
-            const { github, external, title } = node.frontmatter;
+            const { title, conference_type } = node.frontmatter;
 
             return (
               <tr key={i} ref={el => (revealProjects.current[i] = el)}>
                 <td>{i + 1}</td>
                 {/* <td className="overline year">{new Date(date).getFullYear()}</td> */}
-                <td className="title" dangerouslySetInnerHTML={{ __html: formatTitle(title) }}></td>
+                <td
+                  className="title"
+                  dangerouslySetInnerHTML={{ __html: formatTitle(title, conference_type) }}></td>
                 {/* <td className="company hide-on-mobile">{company || '—'}</td>
                 <td className="tech hide-on-mobile">
                   {tech?.map((item, i) => (
@@ -220,22 +229,6 @@ const Publication = () => {
                     </span>
                   ))}
                 </td> */}
-                <td className="links">
-                  <div>
-                    {external && (
-                      <a href={external} rel="noopener noreferrer" target="_blank">
-                        <Icon name="External" />
-                      </a>
-                    )}
-                    {github && (
-                      <a href={github}>
-                        <Icon name="GitHub" />
-                      </a>
-                    )}
-                    {/* {ios && <a href={ios}><Icon name="AppStore" /></a>}
-                    {android && <a href={android}><Icon name="PlayStore" /></a>} */}
-                  </div>
-                </td>
               </tr>
             );
           })}
@@ -245,6 +238,6 @@ const Publication = () => {
   );
 };
 
-Publication.propTypes = {};
+Conference.propTypes = {};
 
-export default Publication;
+export default Conference;

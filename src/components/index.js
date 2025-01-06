@@ -11,6 +11,7 @@ export { default as Hero } from './sections/hero';
 export { default as About } from './sections/about';
 export { default as Research } from './sections/research';
 export { default as Publication } from './sections/publication';
+export { default as Conference } from './sections/conference';
 export { default as Jobs } from './sections/jobs';
 export { default as Featured } from './sections/featured';
 export { default as Projects } from './sections/projects';

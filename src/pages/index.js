@@ -7,6 +7,7 @@ import {
   About,
   Research,
   Publication,
+  Conference,
   Featured,
   Projects,
   Contact,
@@ -23,6 +24,7 @@ const IndexPage = ({ location }) => (
       <About />
       <Research />
       <Publication />
+      <Conference />
       {/* <Jobs /> */}
       <Featured />
       <Projects />
