@@ -25,8 +25,56 @@ const StyledResearchSection = styled.section`
   margin-top: -100px;
   margin-left: auto;
   .vision-text {
-    margin-bottom: 10px; /* Small gap after the 'my vision' part */
+    margin-bottom: 10px;
     margin-top: -30px;
+
+    .video-link {
+      color: var(--green);
+      cursor: pointer;
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--green-light);
+      }
+    }
+  }
+
+  .video-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    background: var(--dark-navy);
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+    border-radius: var(--border-radius);
+    z-index: 1000;
+    overflow: hidden;
+
+    video {
+      width: 100%;
+      border-radius: var(--border-radius);
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: var(--border-radius);
+      font-size: var(--fz-md);
+      z-index: 1001;
+
+      &:hover {
+        background: var(--green);
+        color: var(--dark-navy);
+      }
+    }
   }
 `;
 
@@ -34,6 +82,7 @@ const StyledTabList = styled.div`
   position: relative;
   z-index: 3;
   width: max-content;
+  flex-wrap: wrap; /* Allows tabs to wrap on smaller screens */
   padding: 0;
   margin: 0;
   list-style: none;
@@ -51,7 +100,16 @@ const StyledTabList = styled.div`
     padding-left: 25px;
     margin-left: -25px;
   }
+  @media (max-width: 600px) {
+    .inner {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+    }
 
+    .inner::-webkit-scrollbar {
+      display: none; /* Hide scrollbars for better UX */
+    }
+  }
   li {
     &:first-of-type {
       @media (max-width: 600px) {
@@ -171,6 +229,21 @@ const StyledTabPanel = styled.div`
 `;
 
 const Research = () => {
+  const [isVideoVisible, setIsVideoVisible] = useState(false);
+  const videoRef = useRef(null);
+  const handleVideoToggle = () => {
+    if (isVideoVisible && videoRef.current) {
+      // Pause and reset video when closing
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+    setIsVideoVisible(!isVideoVisible);
+  };
+
+  const handleCloseClick = e => {
+    e.stopPropagation(); // Prevent event propagation from the button
+    handleVideoToggle();
+  };
   const data = useStaticQuery(graphql`
     query {
       research: allMarkdownRemark(
@@ -259,9 +332,37 @@ const Research = () => {
         and nature. Equity-based access to water resources isn’t just essential for individual
         well-being; it is critical for a nation's prosperity and sustainability. Water, as a
         resource, has the power to unite or divide, and its fair management is key to preventing
-        conflict and fostering harmony (see this video). This is the vision I tirelessly pursue,
-        striving step by step to turn it into reality.
+        conflict and fostering harmony (
+        <span
+          className="video-link"
+          role="button"
+          tabIndex="0"
+          onClick={handleVideoToggle}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              handleVideoToggle();
+            }
+          }}>
+          see this video
+        </span>
+        ). This is the vision I tirelessly pursue, striving step by step to turn it into reality.
       </p>
+      {isVideoVisible && (
+        <div className="video-container">
+          <button className="close-button" onClick={handleCloseClick}>
+            Close
+          </button>
+          <iframe
+            width="100%"
+            height="450"
+            src="https://www.youtube.com/embed/2BZslnorTEs?rel=0"
+            title="YouTube Video Player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen></iframe>
+        </div>
+      )}
+
       <div className="inner">
         <StyledTabList role="tablist" aria-label="Research tabs" onKeyDown={e => onKeyDown(e)}>
           {researchData &&

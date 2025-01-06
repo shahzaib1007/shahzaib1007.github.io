@@ -21,15 +21,15 @@ const variables = css`
     /* Light Theme Variables */
     --dark-navy-light: #ffffff;
     --navy-light: rgb(119, 120, 129);
-    --light-navy-light: rgb(28, 30, 36);
+    --light-navy-light: rgb(186, 185, 185);
     --lightest-navy-light: #dcdcdc;
     --navy-shadow-light: rgba(0, 0, 0, 0.1);
     --dark-slate-light: #8892b0;
     --slate-light: #495670;
-    --light-slate-light: #8a817c;
+    --light-slate-light: rgb(30, 27, 25);
     --lightest-slate-light: #000000;
     --white-light: #000000;
-    --green-light: rgb(75, 76, 81);
+    --green-light: rgb(69, 110, 224);
     --black-light: #ffffff;
     --logo-fill-light: #ffffff; /* Logo fill color for light theme */
     --logo-stroke-light: #000000; /* Logo stroke color for light theme */
