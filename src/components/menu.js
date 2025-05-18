@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
@@ -300,25 +301,18 @@ const Menu = ({ toggleTheme }) => {
               Resume
             </a>
 
-            
             {/* <button 
               className='resume-link'
               onClick={toggleTheme}>
               🌙 / ☀️
             </button> */}
-            <StyledThemeToggleButton  onClick={toggleTheme}>🌙 / ☀️</StyledThemeToggleButton >
-            
+            <StyledThemeToggleButton onClick={toggleTheme}>🌙 / ☀️</StyledThemeToggleButton>
+
             {fromApp && (
-              <button
-                className="resume-link"
-                onClick={() => window.history.back()}
-                type="button"
-              >
+              <button className="resume-link" onClick={() => window.history.back()} type="button">
                 ← Back to App
               </button>
             )}
-
-            
           </nav>
         </StyledSidebar>
       </div>
@@ -327,3 +321,7 @@ const Menu = ({ toggleTheme }) => {
 };
 
 export default Menu;
+
+Menu.propTypes = {
+  toggleTheme: PropTypes.func.isRequired,
+};
