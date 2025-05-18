@@ -167,11 +167,25 @@ const StyledThemeToggle = styled.button`
   }
 `;
 
+const StyledBackButton = styled.button`
+  ${({ theme }) => theme.mixins.smallButton};
+  margin-left: 15px;
+  font-size: var(--fz-xs);
+  background: none;
+  border: none;
+  cursor: pointer;
+`;
+
 const Nav = ({ isHome, toggleTheme }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  const fromApp =
+    typeof window !== 'undefined'
+      ? new URLSearchParams(window.location.search).get('fromApp') === 'true'
+      : false;
 
   const handleScroll = () => {
     setScrolledToTop(window.pageYOffset < 50);
@@ -246,9 +260,18 @@ const Nav = ({ isHome, toggleTheme }) => {
               </ol>
               <div>{ResumeLink}</div>
               <StyledThemeToggle onClick={toggleTheme}>🌙 / ☀️</StyledThemeToggle>
+
+              {fromApp && (
+                <StyledBackButton
+                  onClick={() => window.history.back()}
+                  style={{ marginLeft: '20px' }} // add margin to separate it
+                >
+                  ← Back
+                </StyledBackButton>
+              )}
             </StyledLinks>
 
-            <Menu />
+            <Menu toggleTheme={toggleTheme} />
           </>
         ) : (
           <>
@@ -285,12 +308,20 @@ const Nav = ({ isHome, toggleTheme }) => {
                 )}
               </TransitionGroup>
               <StyledThemeToggle onClick={toggleTheme}>🌙 / ☀️</StyledThemeToggle>
+              {fromApp && (
+                <StyledBackButton
+                  onClick={() => window.history.back()}
+                  style={{ marginLeft: '20px' }} // add margin to separate it
+                >
+                  ← Back to App
+                </StyledBackButton>
+              )}
             </StyledLinks>
 
             <TransitionGroup component={null}>
               {isMounted && (
                 <CSSTransition classNames={fadeClass} timeout={timeout}>
-                  <Menu />
+                  <Menu toggleTheme={toggleTheme} />
                 </CSSTransition>
               )}
             </TransitionGroup>
