@@ -8,11 +8,11 @@ module.exports = {
     },
     // {
     //   name: 'Instagram',
-    //   url: 'https://www.instagram.com/bchiang7',
+    //   url: 'https://www.instagram.com/shahzaib1007/',
     // },
     // {
     //   name: 'Twitter',
-    //   url: 'https://twitter.com/bchiang7',
+    //   url: 'https://twitter.com/shahzaib1007',
     // },
     {
       name: 'Linkedin',
