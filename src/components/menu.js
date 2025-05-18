@@ -85,6 +85,29 @@ const StyledHamburgerButton = styled.button`
   }
 `;
 
+const StyledThemeToggleButton = styled.button`
+  ${({ theme }) => theme.mixins.bigButton};
+  padding: 18px 50px;
+  margin: 10% auto 0;
+  width: max-content;
+
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  font-size: var(--fz-sm);
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: var(--green-bright);
+    background-color: var(--green-tint); // optional
+    outline: none;
+  }
+`;
+
 const StyledSidebar = styled.aside`
   display: none;
 
@@ -155,9 +178,16 @@ const StyledSidebar = styled.aside`
   }
 `;
 
-const Menu = () => {
+const Menu = ({ toggleTheme }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [fromApp, setFromApp] = useState(false);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const param = new URLSearchParams(window.location.search).get('fromApp');
+      setFromApp(param === 'true');
+    }
+  }, []);
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const buttonRef = useRef(null);
@@ -269,6 +299,26 @@ const Menu = () => {
             <a href="/resume.pdf" className="resume-link">
               Resume
             </a>
+
+            
+            {/* <button 
+              className='resume-link'
+              onClick={toggleTheme}>
+              🌙 / ☀️
+            </button> */}
+            <StyledThemeToggleButton  onClick={toggleTheme}>🌙 / ☀️</StyledThemeToggleButton >
+            
+            {fromApp && (
+              <button
+                className="resume-link"
+                onClick={() => window.history.back()}
+                type="button"
+              >
+                ← Back to App
+              </button>
+            )}
+
+            
           </nav>
         </StyledSidebar>
       </div>
