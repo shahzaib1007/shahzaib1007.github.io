@@ -11,6 +11,7 @@ import {
   IconGoogleScholar,
   IconOrcid,
   IconInstagram,
+  IconRTD,
   IconLinkedin,
   IconLoader,
   IconLogo,
@@ -41,6 +42,8 @@ const Icon = ({ name }) => {
       return <IconOrcid />;
     case 'Instagram':
       return <IconInstagram />;
+    case 'RTD':
+      return <IconRTD />;
     case 'Linkedin':
       return <IconLinkedin />;
     case 'Loader':

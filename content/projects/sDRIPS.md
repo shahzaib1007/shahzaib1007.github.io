@@ -4,4 +4,5 @@ title: 'Satellite Data Rendered Irrigation using Penman-Monteith and SEBAL (sD.R
 github: 'https://github.com/shahzaib1007/sDRIPS'
 external: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5049583'
 showInProjects: false
+rtd: 'https://sdrips.readthedocs.io/en/latest/'
 ---

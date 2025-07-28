@@ -4,6 +4,7 @@ title: 'sD.R.I.P.S'
 cover: './sDRIPS.png'
 github: 'https://github.com/shahzaib1007/sDRIPS'
 external: 'https://github.com/shahzaib1007/sDRIPS'
+rtd: 'https://sdrips.readthedocs.io/en/latest/'
 tech:
   - Canals
   - Irrigation

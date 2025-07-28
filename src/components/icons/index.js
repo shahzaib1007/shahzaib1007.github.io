@@ -10,6 +10,7 @@ export { default as IconGoogleScholar } from './google_scholar';
 export { default as IconOrcid } from './orcid';
 export { default as IconHex } from './hex';
 export { default as IconInstagram } from './instagram';
+export { default as IconRTD } from './rtd';
 export { default as IconLinkedin } from './linkedin';
 export { default as IconLoader } from './loader';
 export { default as IconLogo } from './logo';
