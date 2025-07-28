@@ -298,7 +298,7 @@ const Menu = ({ toggleTheme }) => {
             )}
 
             <a href="/resume.pdf" className="resume-link">
-              Resume
+              Résumé
             </a>
 
             {/* <button 
