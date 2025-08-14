@@ -169,8 +169,7 @@ module.exports = {
       options: {
         trackingIds: ['G-EVNC946GG5'],
         gtagConfig: {
-          anonymize_ip: true, // GDPR-friendly
-          cookie_expires: 0,
+          anonymize_ip: true,
         },
         pluginConfig: {
           head: true,
