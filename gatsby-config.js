@@ -165,11 +165,16 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: 'G-KWKYN1117K',
-        head: true,
-        enableWebVitalsTracking: true,
+        trackingIds: ['G-EVNC946GG5'],
+        gtagConfig: {
+          anonymize_ip: true, // GDPR-friendly
+          cookie_expires: 0,
+        },
+        pluginConfig: {
+          head: true,
+        },
       },
     },
   ],
