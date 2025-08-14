@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
@@ -11,22 +11,16 @@ import {
   Featured,
   Projects,
   Contact,
-} from '@components'; // Adding Research component
+} from '@components';
 
 const StyledMainContainer = styled.main`
   counter-reset: section;
 `;
 
 const IndexPage = ({ location }) => {
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const [isDarkTheme, setIsDarkTheme] = useState(false); // State to manage theme, false for light default
 
-  const toggleTheme = () => {
-    const nextThemeIsDark = !isDarkTheme;
-    setIsDarkTheme(nextThemeIsDark);
-
-    const themeType = nextThemeIsDark ? 'dark' : 'light';
-
-    // List of default variables to update
+  const updateThemeVariables = themeType => {
     const variables = [
       '--dark-navy',
       '--navy',
@@ -44,19 +38,28 @@ const IndexPage = ({ location }) => {
       '--logo-stroke',
     ];
 
-    // Update variables to point to the respective theme type
     variables.forEach(variable => {
       const newValue = `var(${variable}-${themeType})`;
       document.documentElement.style.setProperty(variable, newValue);
     });
   };
 
+  const toggleTheme = () => {
+    const nextThemeIsDark = !isDarkTheme;
+    setIsDarkTheme(nextThemeIsDark);
+    updateThemeVariables(nextThemeIsDark ? 'dark' : 'light');
+  };
+
+  // Set default theme on first render
+  useEffect(() => {
+    updateThemeVariables(isDarkTheme ? 'dark' : 'light');
+  }, [isDarkTheme]);
+
   return (
     <Layout location={location} toggleTheme={toggleTheme}>
       <StyledMainContainer className="fillHeight">
         <Hero />
         <About />
-        {/* <Jobs /> */}
         <Research />
         <Publication />
         <Conference />
