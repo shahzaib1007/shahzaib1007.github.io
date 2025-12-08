@@ -157,8 +157,13 @@ const About = () => {
               <strong>Education</strong>
               <ul>
                 <li>
-                  Ph.D in Civil and Environmental Engineering, University of Washington, 2025
-                  (Expected)
+                  <p>
+                    Ph.D in Civil and Environmental Engineering, University of Washington, 2025 ({' '}
+                    <a href="/phd_defense.pdf" target="_blank" rel="noreferrer">
+                      Link to my PhD Defense PPT
+                    </a>{' '}
+                    )
+                  </p>
                 </li>
                 <li>M.S. in Civil and Environmental Engineering, University of Washington, 2022</li>
                 <li>B.Tech. in Civil Engineering (Honors), IIT Gandhinagar, 2021</li>
