@@ -238,7 +238,7 @@ const Nav = ({ isHome, toggleTheme }) => {
 
   const ResumeLink = (
     <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-      Résumé
+      CV/Résumé
     </a>
   );
 
