@@ -2,7 +2,7 @@
 date: '3'
 title: 'IRAS'
 cover: './iras.png'
-github: 'https://github.com/shahzaib1007/sDRIPS'
+github: 'https://github.com/UW-SASWE/sDRIPS'
 external: 'https://iras.bamis.gov.bd/'
 # cta: 'https://iras.bamis.gov.bd/'
 tech:
