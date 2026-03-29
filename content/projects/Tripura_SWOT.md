@@ -4,8 +4,9 @@ title: 'Tripura Floods'
 github: ''
 external: 'https://depts.washington.edu/saswe/tripura/SWOT.html'
 tech:
-  - SWOT
-  - Floods
+  - SWOT |
+  - Floods |
+  - Automated Data Visualization |
 showInProjects: true
 ---
 

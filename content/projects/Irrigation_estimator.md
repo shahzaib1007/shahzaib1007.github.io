@@ -4,8 +4,10 @@ title: 'Water Deficit and Surplus Estimator'
 github: ''
 external: 'https://ee-skhan7.projects.earthengine.app/view/irrigation-status-estimator'
 tech:
-  - Cloud computing
-  - Irrigation
+  - Cloud Computing |
+  - Google Earth Engine |
+  - App Developement |
+  - Irrigation |
 company: ''
 showInProjects: true
 ---

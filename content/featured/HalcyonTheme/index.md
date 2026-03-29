@@ -1,16 +1,16 @@
 ---
 date: '1'
 title: 'sD.R.I.P.S'
-cover: './sDRIPS.png'
+cover: './sDRIPS_v2.png'
 github: 'https://github.com/UW-SASWE/sDRIPS'
 external: 'https://github.com/UW-SASWE/sDRIPS'
 rtd: 'https://sdrips.readthedocs.io/en/latest/'
 tech:
-  - Canals
+  - Canals Operators
+  - Farmers
   - Irrigation
-  - Advisory
-  - SEBAL
-  - Penman-Motetih
+  - Scalable
+  - Open-Source
 ---
 
-A scalable open-source tool designed to guide surface water canal operators in determining the accurate water supply needed for each region based on actual crop water requirements. Currently in discussions to operationalize this system with the [Bangladesh Water Developement Board](https://www.bwdb.gov.bd/) to to support Teesta Barrage Irrigation Project canal operators.
+A scalable open-source tool designed to guide surface water canal operators and farmers in determining the accurate water supply needed for each region based on actual crop water requirements. Currently in discussions to operationalize this system with the [Bangladesh Water Developement Board](https://www.bwdb.gov.bd/) to to support Teesta Barrage Irrigation Project canal operators.

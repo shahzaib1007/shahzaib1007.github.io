@@ -4,8 +4,10 @@ title: 'Python API for WRIS India'
 github: 'https://github.com/SarathUW/PyWRIS'
 external: ''
 tech:
-  - Data
-  - Water resources
+  - Data Extraction |
+  - Data Analysis |
+  - Data Visualization |
+  - Water Resources |
 showInProjects: true
 ---
 

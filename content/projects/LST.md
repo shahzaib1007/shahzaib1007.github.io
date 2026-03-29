@@ -4,8 +4,9 @@ title: 'Lake Surface Temperature'
 github: ''
 external: 'https://depts.washington.edu/saswe/columbia/'
 tech:
-  - Landsat
-  - Thermal infrared
+  - Landsat Satellite |
+  - Thermal Infrared |
+  - Skin Temperature |
 company: ''
 showInProjects: true
 ---

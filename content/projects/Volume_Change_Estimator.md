@@ -4,9 +4,9 @@ title: 'Volume Change Estimator'
 github: ''
 external: 'https://skhan7.users.earthengine.app/view/water-storage-estimator'
 tech:
-  - Cloud computing
-  - Volume change
-  - Water managers
+  - Cloud Computing |
+  - Ensemble Approach |
+  - Uncertainty Quantification |
 company: ''
 showInProjects: true
 ---
