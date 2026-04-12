@@ -7,6 +7,7 @@ tech:
   - Cloud Computing |
   - Ensemble Approach |
   - Uncertainty Quantification |
+  - Google Earth Engine App |
 company: ''
 showInProjects: true
 ---
