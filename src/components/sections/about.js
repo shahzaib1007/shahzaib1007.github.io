@@ -131,7 +131,7 @@ const About = () => {
     'Irrigation',
     'Evapotranspiration',
     'Climate',
-    'Hydrological Modelling',
+    'Hydrological Modeling',
     'Networks in Water Resources Management',
     'Cloud Computing',
   ];

@@ -5,6 +5,13 @@ import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 // import { Typewriter } from 'react-simple-typewriter';
 
+const PROFESSIONAL_TITLES = [
+  'Hydrologist',
+  'Earth Data Scientist',
+  'Remote Sensing Engineer',
+  'Algorithm Developer',
+];
+
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
@@ -34,6 +41,29 @@ const StyledHeroSection = styled.section`
     margin-top: 5px;
     color: var(--slate);
     line-height: 0.9;
+
+    .typewriter-word {
+      color: var(--green);
+    }
+
+    .cursor {
+      display: inline-block;
+      margin-left: 2px;
+      color: var(--green);
+      animation: blink 1s steps(1) infinite;
+    }
+  }
+
+  @keyframes blink {
+    0%,
+    49% {
+      opacity: 1;
+    }
+
+    50%,
+    100% {
+      opacity: 0;
+    }
   }
 
   p {
@@ -49,6 +79,9 @@ const StyledHeroSection = styled.section`
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -58,11 +91,55 @@ const Hero = () => {
 
     const timeout = setTimeout(() => setIsMounted(true), navDelay);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [prefersReducedMotion]);
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setDisplayText(PROFESSIONAL_TITLES[0]);
+      return;
+    }
+
+    const currentTitle = PROFESSIONAL_TITLES[titleIndex];
+    const isTypingComplete = displayText === currentTitle;
+    const isDeletingComplete = displayText === '';
+
+    let timeoutDelay = isDeleting ? 45 : 90;
+
+    if (isTypingComplete && !isDeleting) {
+      timeoutDelay = 1300;
+    }
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting && !isTypingComplete) {
+        setDisplayText(currentTitle.slice(0, displayText.length + 1));
+        return;
+      }
+
+      if (!isDeleting && isTypingComplete) {
+        setIsDeleting(true);
+        return;
+      }
+
+      if (isDeleting && !isDeletingComplete) {
+        setDisplayText(currentTitle.slice(0, displayText.length - 1));
+        return;
+      }
+
+      setIsDeleting(false);
+      setTitleIndex((titleIndex + 1) % PROFESSIONAL_TITLES.length);
+    }, timeoutDelay);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, prefersReducedMotion, titleIndex]);
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Shahzaib Khan.</h2>;
-  const three = <h3 className="big-heading">I am a Hydrologist.</h3>;
+  const three = (
+    <h3 className="big-heading">
+      I am a <span className="typewriter-word">{displayText}</span>
+      {!prefersReducedMotion && <span className="cursor">|</span>}
+    </h3>
+  );
   // const three = (
   //   <h3 className="big-heading">
   //     I am a{' '}
