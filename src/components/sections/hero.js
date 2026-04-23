@@ -6,8 +6,8 @@ import { usePrefersReducedMotion } from '@hooks';
 // import { Typewriter } from 'react-simple-typewriter';
 
 const PROFESSIONAL_TITLES = [
-  'Hydrologist',
   'Earth Data Scientist',
+  'Hydrologist',
   'Remote Sensing Engineer',
   'Algorithm Developer',
 ];
