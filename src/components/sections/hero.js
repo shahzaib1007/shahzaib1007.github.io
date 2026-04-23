@@ -41,6 +41,7 @@ const StyledHeroSection = styled.section`
     margin-top: 5px;
     color: var(--slate);
     line-height: 0.9;
+    min-height: 1.8em;
 
     .typewriter-word {
       color: var(--green);
@@ -159,14 +160,16 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I specialize in applying satellite remote sensing to monitor and manage surface water
-        resources, addressing critical challenges in hydrology and water sustainability. Currently,
-        I am pursuing my PhD at the{' '}
+        I build satellite-driven systems for water, climate, agriculture, and environmental
+        decision-making. My work focuses on designing scalable pipelines that integrate satellite
+        and climate data, developing geospatial systems used by stakeholders across multiple
+        countries, and delivering uncertainty-aware solutions built for real-world deployment. I am
+        currently pursuing my PhD at the{' '}
         <a href="https://saswe.net/" target="_blank" rel="noreferrer">
           SASWE Labs
         </a>{' '}
-        at University of Washington, Seattle, where I integrate research with practical applications
-        to make impactful contributions to water resource management.
+        at the University of Washington, Seattle, where my goal is to turn Earth observation
+        research into deployable systems for operational water and environmental management.
       </p>
     </>
   );
