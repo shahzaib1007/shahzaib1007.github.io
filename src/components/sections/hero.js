@@ -20,9 +20,16 @@ const StyledHeroSection = styled.section`
   height: 100vh;
   padding: 0;
 
+  @media (max-width: 480px) {
+    justify-content: flex-start;
+    min-height: auto;
+    height: auto;
+    padding: calc(var(--nav-height) + 24px) 0 80px;
+  }
+
   @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     height: auto;
-    padding-top: var(--nav-height);
+    padding-top: calc(var(--nav-height) + 24px);
   }
 
   h1 {
@@ -52,6 +59,20 @@ const StyledHeroSection = styled.section`
       margin-left: 2px;
       color: var(--green);
       animation: blink 1s steps(1) infinite;
+    }
+  }
+
+  h2.big-heading,
+  h3.big-heading {
+    @media (max-width: 480px) {
+      font-size: clamp(32px, 10vw, 40px);
+      line-height: 1.08;
+    }
+  }
+
+  h3.big-heading {
+    @media (max-width: 480px) {
+      min-height: 2.25em;
     }
   }
 
