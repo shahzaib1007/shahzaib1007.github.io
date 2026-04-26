@@ -36,6 +36,7 @@ const IndexPage = ({ location }) => {
       '--black',
       '--logo-fill',
       '--logo-stroke',
+      '--cat-filter',
     ];
 
     variables.forEach(variable => {

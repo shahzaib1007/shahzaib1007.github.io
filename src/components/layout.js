@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
+import Chatbot from './sections/chatbot';
 import { Head, Loader, Nav, Social, Email, Footer } from '@components';
 import { GlobalStyle, theme } from '@styles';
 
@@ -70,6 +71,8 @@ const Layout = ({ children, location, toggleTheme }) => {
                 {children}
                 <Footer />
               </div>
+
+              <Chatbot />
             </StyledContent>
           )}
         </ThemeProvider>
