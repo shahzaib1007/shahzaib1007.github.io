@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { graphql, useStaticQuery, withPrefix } from 'gatsby';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { email, socialMedia } from '@config';
 
@@ -82,11 +83,6 @@ const KNOWLEDGE = {
       title: 'sD.R.I.P.S package',
       summary:
         'An open-source package for satellite-informed surface water irrigation optimization.',
-    },
-    {
-      title: 'GRILSS',
-      summary:
-        'A reservoir sedimentation data curation effort focused on building a global dataset for decision support.',
     },
   ],
 };
@@ -212,7 +208,7 @@ const MessageBubble = styled.div`
   max-width: 100%;
   padding: 10px 12px;
   border-radius: 12px;
-  white-space: pre-wrap;
+  white-space: normal;
   line-height: 1.45;
   font-size: 13px;
   color: ${({ role }) => (role === 'assistant' ? 'var(--lightest-slate)' : 'var(--dark-navy)')};
@@ -222,6 +218,64 @@ const MessageBubble = styled.div`
   margin-left: ${({ role }) => (role === 'assistant' ? '0' : 'auto')};
   box-shadow: ${({ role }) =>
     role === 'assistant' ? 'none' : '0 8px 16px -14px rgba(100, 255, 218, 0.5)'};
+
+  p {
+    margin: 0;
+  }
+
+  p + p,
+  ul + p,
+  p + ul {
+    margin-top: 8px;
+  }
+
+  ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+  }
+
+  li + li {
+    margin-top: 4px;
+  }
+
+  a {
+    color: ${({ role }) => (role === 'assistant' ? 'var(--green)' : 'var(--dark-navy)')};
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    overflow-wrap: anywhere;
+  }
+
+  strong {
+    color: inherit;
+    font-weight: 700;
+  }
+`;
+
+const SourceList = styled.div`
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(136, 146, 176, 0.22);
+  font-size: 12px;
+  line-height: 1.45;
+`;
+
+const SourceLink = styled.a`
+  display: block;
+  max-width: 100%;
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+
+  & + & {
+    margin-top: 5px;
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--lightest-slate);
+    outline: none;
+  }
 `;
 
 const SuggestionRow = styled.div`
@@ -613,6 +667,208 @@ const buildDocAnswer = matches => {
   }`;
 };
 
+const sourceHref = source => {
+  if (!source) {
+    return '';
+  }
+
+  if (source.link) {
+    return source.link;
+  }
+
+  const categoryAnchors = {
+    conferences: '/#publication',
+    featured: '/#projects',
+    posts: '/pensieve/',
+    projects: '/#projects',
+    publications: '/#publication',
+    research: '/#research',
+  };
+
+  return categoryAnchors[source.category] ? withPrefix(categoryAnchors[source.category]) : '';
+};
+
+const sourceLabel = (source, index) => {
+  if (!source) {
+    return `Source ${index + 1}`;
+  }
+
+  return source.title || source.sourcePath || `Source ${index + 1}`;
+};
+
+const renderInlineMarkdown = (text, sources = [], keyPrefix = 'inline') => {
+  const nodes = [];
+  const pattern =
+    /(\[([^\]]+)\]\((https?:\/\/[^)\s]+|mailto:[^)]+)\)|\*\*([^*]+)\*\*|\[(\d+)\]|https?:\/\/[^\s<]+|mailto:[^\s<]+)/g;
+  let lastIndex = 0;
+  let match;
+
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(text.slice(lastIndex, match.index));
+    }
+
+    const [raw, , linkLabel, linkHref, boldText, sourceNumber] = match;
+
+    if (linkLabel && linkHref) {
+      nodes.push(
+        <a
+          key={`${keyPrefix}-link-${match.index}`}
+          href={linkHref}
+          target="_blank"
+          rel="noreferrer">
+          {linkLabel}
+        </a>,
+      );
+    } else if (boldText) {
+      nodes.push(<strong key={`${keyPrefix}-bold-${match.index}`}>{boldText}</strong>);
+    } else if (sourceNumber) {
+      const source = sources[Number(sourceNumber) - 1];
+      const href = sourceHref(source);
+      nodes.push(
+        href ? (
+          <a
+            key={`${keyPrefix}-source-${match.index}`}
+            href={href}
+            target="_blank"
+            rel="noreferrer">
+            {sourceLabel(source, Number(sourceNumber) - 1)}
+          </a>
+        ) : (
+          raw
+        ),
+      );
+    } else {
+      const punctuation = raw.match(/[.,;:!?)]$/)?.[0] || '';
+      const href = punctuation ? raw.slice(0, -1) : raw;
+      nodes.push(
+        <a key={`${keyPrefix}-url-${match.index}`} href={href} target="_blank" rel="noreferrer">
+          {href}
+        </a>,
+      );
+      if (punctuation) {
+        nodes.push(punctuation);
+      }
+    }
+
+    lastIndex = match.index + raw.length;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex));
+  }
+
+  return nodes.length ? nodes : text;
+};
+
+const renderMessageText = (text, sources = []) => {
+  const lines = String(text || '')
+    .split(/\n+/)
+    .filter(Boolean);
+  const blocks = [];
+  let listItems = [];
+
+  const flushList = blockIndex => {
+    if (!listItems.length) {
+      return;
+    }
+
+    blocks.push(
+      <ul key={`list-${blockIndex}`}>
+        {listItems.map((item, index) => (
+          <li key={`item-${blockIndex}-${index}`}>
+            {renderInlineMarkdown(item, sources, `li-${blockIndex}-${index}`)}
+          </li>
+        ))}
+      </ul>,
+    );
+    listItems = [];
+  };
+
+  lines.forEach((line, index) => {
+    const bulletMatch = line.match(/^\s*(?:[-*]|\d+\.)\s+(.+)$/);
+
+    if (bulletMatch) {
+      listItems.push(bulletMatch[1]);
+      return;
+    }
+
+    flushList(index);
+    blocks.push(
+      <p key={`paragraph-${index}`}>{renderInlineMarkdown(line, sources, `paragraph-${index}`)}</p>,
+    );
+  });
+
+  flushList('end');
+
+  return blocks;
+};
+
+const stripInlineSources = text =>
+  String(text || '')
+    .split('\n')
+    .filter(line => !/^\s*Sources?:\s*(?:\[[^\]]+\](?:,\s*)?)+\s*$/i.test(line.trim()))
+    .join('\n')
+    .trim();
+
+const isUnsupportedAnswer = text => {
+  const normalized = String(text || '').toLowerCase();
+  return (
+    normalized.includes('does not contain') ||
+    normalized.includes('could not find') ||
+    normalized.includes('couldn\'t find') ||
+    normalized.includes('not possible') ||
+    normalized.includes('not enough') ||
+    normalized.includes('not explicitly')
+  );
+};
+
+const MessageContent = ({ message }) => {
+  const sources = Array.isArray(message.sources) ? message.sources : [];
+  const displaySources =
+    message.role === 'assistant' && sources.length > 0 && !isUnsupportedAnswer(message.text);
+
+  return (
+    <>
+      {renderMessageText(stripInlineSources(message.text), sources)}
+      {displaySources && (
+        <SourceList aria-label="Answer sources">
+          {sources.map((source, index) => {
+            const href = sourceHref(source);
+            if (!href) {
+              return null;
+            }
+
+            return (
+              <SourceLink
+                key={`${source.sourcePath || source.title}-${index}`}
+                href={href}
+                target="_blank"
+                rel="noreferrer">
+                {sourceLabel(source, index)}
+              </SourceLink>
+            );
+          })}
+        </SourceList>
+      )}
+    </>
+  );
+};
+
+MessageContent.propTypes = {
+  message: PropTypes.shape({
+    role: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    sources: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        sourcePath: PropTypes.string,
+        link: PropTypes.string,
+      }),
+    ),
+  }).isRequired,
+};
+
 const Chatbot = () => {
   const messageEndRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -737,7 +993,11 @@ const Chatbot = () => {
         const data = await response.json();
         if (!data.fallback && data.answer) {
           // Use the RAG-generated answer.
-          const botMessage = { role: 'assistant', text: data.answer };
+          const botMessage = {
+            role: 'assistant',
+            text: stripInlineSources(data.answer),
+            sources: Array.isArray(data.sources) ? data.sources : [],
+          };
           setMessages(current => [...current, botMessage]);
           setIsLoading(false);
           return;
@@ -779,7 +1039,9 @@ const Chatbot = () => {
             <MessageList aria-live="polite">
               {messages.map((message, index) => (
                 <li key={`${message.role}-${index}`}>
-                  <MessageBubble role={message.role}>{message.text}</MessageBubble>
+                  <MessageBubble role={message.role}>
+                    <MessageContent message={message} />
+                  </MessageBubble>
                 </li>
               ))}
               <li ref={messageEndRef} />
