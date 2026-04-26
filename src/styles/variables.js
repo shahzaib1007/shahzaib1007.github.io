@@ -17,6 +17,7 @@ const variables = css`
     --black-dark: #000000;
     --logo-fill-dark: #000000; /* Logo fill color for dark theme */
     --logo-stroke-dark: #64ffda; /* Logo stroke color for dark theme */
+    --cat-filter-dark: invert(1) brightness(0.8) sepia(1) hue-rotate(130deg) saturate(3); /* Mint green cat for dark theme */
 
     /* Light Theme Variables */
     --dark-navy-light: #ffffff;
@@ -33,6 +34,7 @@ const variables = css`
     --black-light: #ffffff;
     --logo-fill-light: #ffffff; /* Logo fill color for light theme */
     --logo-stroke-light: #000000; /* Logo stroke color for light theme */
+    --cat-filter-light: none;
 
     /* Default Variables (Initially Dark Theme) */
     --dark-navy: var(--dark-navy-dark);
@@ -49,6 +51,7 @@ const variables = css`
     --black: var(--black-dark);
     --logo-fill: var(--logo-fill-dark);
     --logo-stroke: var(--logo-stroke-dark);
+    --cat-filter: var(--cat-filter-dark);
 
     /* Other Variables */
     --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
