@@ -17,7 +17,9 @@ const variables = css`
     --black-dark: #000000;
     --logo-fill-dark: #000000; /* Logo fill color for dark theme */
     --logo-stroke-dark: #64ffda; /* Logo stroke color for dark theme */
-    --cat-filter-dark: invert(1) brightness(0.8) sepia(1) hue-rotate(130deg) saturate(3); /* Mint green cat for dark theme */
+    --cat-color-dark: #64ffda;
+    --cat-halo-dark: rgba(100, 255, 218, 0.34);
+    --cat-halo-strong-dark: rgba(100, 255, 218, 0.5);
 
     /* Light Theme Variables */
     --dark-navy-light: #ffffff;
@@ -34,7 +36,9 @@ const variables = css`
     --black-light: #ffffff;
     --logo-fill-light: #ffffff; /* Logo fill color for light theme */
     --logo-stroke-light: #000000; /* Logo stroke color for light theme */
-    --cat-filter-light: none;
+    --cat-color-light: rgb(69, 110, 224);
+    --cat-halo-light: rgba(69, 110, 224, 0.24);
+    --cat-halo-strong-light: rgba(69, 110, 224, 0.36);
 
     /* Default Variables (Initially Dark Theme) */
     --dark-navy: var(--dark-navy-dark);
@@ -51,7 +55,9 @@ const variables = css`
     --black: var(--black-dark);
     --logo-fill: var(--logo-fill-dark);
     --logo-stroke: var(--logo-stroke-dark);
-    --cat-filter: var(--cat-filter-dark);
+    --cat-color: var(--cat-color-dark);
+    --cat-halo: var(--cat-halo-dark);
+    --cat-halo-strong: var(--cat-halo-strong-dark);
 
     /* Other Variables */
     --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,

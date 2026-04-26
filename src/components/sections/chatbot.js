@@ -297,11 +297,12 @@ const ToggleButton = styled.button`
   &::before {
     content: '';
     position: absolute;
-    inset: -6px;
+    inset: -7px;
     border-radius: 50%;
-    border: 2px solid var(--green);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--green) 22%, transparent),
-      0 10px 24px -18px var(--navy-shadow);
+    border: 2px solid var(--cat-color);
+    background: radial-gradient(circle, var(--cat-halo) 0%, transparent 62%), var(--dark-navy);
+    box-shadow: 0 0 0 5px var(--cat-halo), 0 0 28px var(--cat-halo),
+      0 12px 26px -18px var(--navy-shadow);
     pointer-events: none;
     transition: var(--transition);
   }
@@ -315,29 +316,26 @@ const ToggleButton = styled.button`
 
   &:hover::before,
   &:focus::before {
-    box-shadow: 0 0 0 5px color-mix(in srgb, var(--green) 30%, transparent),
+    box-shadow: 0 0 0 6px var(--cat-halo-strong), 0 0 36px var(--cat-halo-strong),
       0 14px 28px -18px var(--navy-shadow);
   }
+`;
 
-  img {
-    position: relative;
-    z-index: 1;
-    width: 64px;
-    height: 64px;
-    display: block;
-    opacity: 1;
-    filter: var(--cat-filter);
-    transition: var(--transition);
-  }
+const CatGlyph = styled.span`
+  position: relative;
+  z-index: 1;
+  width: 60px;
+  height: 56px;
+  display: block;
+  background: var(--cat-color);
+  mask: var(--cat-mask-url) center / contain no-repeat;
+  -webkit-mask: var(--cat-mask-url) center / contain no-repeat;
+  filter: drop-shadow(0 2px 4px rgba(2, 12, 27, 0.18));
+  transition: var(--transition);
 
   @media (max-width: 640px) {
-    width: 58px;
-    height: 58px;
-
-    img {
-      width: 58px;
-      height: 58px;
-    }
+    width: 54px;
+    height: 50px;
   }
 `;
 
@@ -821,8 +819,9 @@ const Chatbot = () => {
       <ToggleButton
         type="button"
         onClick={() => setIsOpen(current => !current)}
-        aria-label={isOpen ? 'Close AI chat' : 'Open AI chat'}>
-        <img src={withPrefix('/shahzaib-ai-cat.svg')} alt="" aria-hidden="true" />
+        aria-label={isOpen ? 'Close AI chat' : 'Open AI chat'}
+        style={{ '--cat-mask-url': `url("${withPrefix('/shahzaib-ai-cat.svg')}")` }}>
+        <CatGlyph aria-hidden="true" />
       </ToggleButton>
     </StyledWidget>
   );
