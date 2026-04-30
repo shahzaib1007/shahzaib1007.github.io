@@ -181,16 +181,18 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I build satellite-driven systems for water, climate, agriculture, and environmental
-        decision-making. My work focuses on designing scalable pipelines that integrate satellite
-        and climate data, developing geospatial systems used by stakeholders across multiple
-        countries, and delivering uncertainty-aware solutions built for real-world deployment. I am
-        currently pursuing my PhD at the{' '}
+        I build satellite-driven decision-support systems for water, climate, agriculture, and
+        environmental management. My work turns Earth observation, climate data, and geospatial
+        modeling into scalable tools used by stakeholders across multiple countries. As a Ph.D.
+        candidate at the University of Washington’s{' '}
         <a href="https://saswe.net/" target="_blank" rel="noreferrer">
-          SASWE Labs
+          SASWE Lab
         </a>{' '}
-        at the University of Washington, Seattle, where my goal is to turn Earth observation
-        research into deployable systems for operational water and environmental management.
+        my research focuses on operational water intelligence, uncertainty-aware modeling, and
+        deployable systems that move science from research into real-world decision-making. My work
+        has been recognized with the <span className="accent-highlight">2026 Nece Award</span> from
+        the University of Washington, given to department's{' '}
+        <span className="accent-highlight">best doctoral students</span>.
       </p>
     </>
   );

@@ -416,6 +416,16 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .accent-highlight {
+    color: var(--green);
+    font-weight: 600;
+  }
+    .accent-muted {
+      color: var(--green);
+      font-weight: 500;
+      opacity: 0.72;
+    }
+
   .breadcrumb {
     display: flex;
     align-items: center;
