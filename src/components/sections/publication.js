@@ -147,6 +147,7 @@ const Publication = () => {
               date
               title
               github
+              paper
               external
             }
           }
@@ -204,7 +205,7 @@ const Publication = () => {
         </thead>
         <tbody>
           {projects.slice(0, rowsToShow).map(({ node }, i) => {
-            const { github, external, title } = node.frontmatter;
+            const { github, paper, external, title } = node.frontmatter;
 
             return (
               <tr key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -230,6 +231,16 @@ const Publication = () => {
                     {github && (
                       <a href={github}>
                         <Icon name="GitHub" />
+                      </a>
+                    )}
+                    {paper && (
+                      <a
+                        href={paper}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        aria-label="Paper"
+                        title="Paper">
+                        <Icon name="RTD" />
                       </a>
                     )}
                     {/* {ios && <a href={ios}><Icon name="AppStore" /></a>}
