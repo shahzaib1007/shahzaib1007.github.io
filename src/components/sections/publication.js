@@ -223,16 +223,6 @@ const Publication = () => {
                 </td> */}
                 <td className="links">
                   <div>
-                    {external && (
-                      <a href={external} rel="noopener noreferrer" target="_blank">
-                        <Icon name="External" />
-                      </a>
-                    )}
-                    {github && (
-                      <a href={github}>
-                        <Icon name="GitHub" />
-                      </a>
-                    )}
                     {paper && (
                       <a
                         href={paper}
@@ -241,6 +231,21 @@ const Publication = () => {
                         aria-label="Paper"
                         title="Paper">
                         <Icon name="RTD" />
+                      </a>
+                    )}
+                    {github && (
+                      <a href={github} aria-label="GitHub Link" title="GitHub">
+                        <Icon name="GitHub" />
+                      </a>
+                    )}
+                    {external && (
+                      <a
+                        href={external}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        aria-label="External Link"
+                        title="External">
+                        <Icon name="External" />
                       </a>
                     )}
                     {/* {ios && <a href={ios}><Icon name="AppStore" /></a>}
