@@ -190,6 +190,13 @@ const Menu = ({ toggleTheme }) => {
     }
   }, []);
   const toggleMenu = () => setMenuOpen(!menuOpen);
+  const handleNavLinkClick = url => {
+    if (url === '/#publication' && typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('showAllPublications'));
+    }
+
+    setMenuOpen(false);
+  };
 
   const buttonRef = useRef(null);
   const navRef = useRef(null);
@@ -289,7 +296,7 @@ const Menu = ({ toggleTheme }) => {
               <ol>
                 {navLinks.map(({ url, name }, i) => (
                   <li key={i}>
-                    <Link to={url} onClick={() => setMenuOpen(false)}>
+                    <Link to={url} onClick={() => handleNavLinkClick(url)}>
                       {name}
                     </Link>
                   </li>

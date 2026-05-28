@@ -211,6 +211,11 @@ const Nav = ({ isHome, toggleTheme }) => {
   const timeout = isHome ? loaderDelay : 0;
   const fadeClass = isHome ? 'fade' : '';
   const fadeDownClass = isHome ? 'fadedown' : '';
+  const handleNavLinkClick = url => {
+    if (url === '/#publication' && typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('showAllPublications'));
+    }
+  };
 
   const Logo = (
     <div className="logo" tabIndex="-1">
@@ -254,7 +259,9 @@ const Nav = ({ isHome, toggleTheme }) => {
                 {navLinks &&
                   navLinks.map(({ url, name }, i) => (
                     <li key={i}>
-                      <Link to={url}>{name}</Link>
+                      <Link to={url} onClick={() => handleNavLinkClick(url)}>
+                        {name}
+                      </Link>
                     </li>
                   ))}
               </ol>
@@ -291,7 +298,9 @@ const Nav = ({ isHome, toggleTheme }) => {
                     navLinks.map(({ url, name }, i) => (
                       <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
                         <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                          <Link to={url}>{name}</Link>
+                          <Link to={url} onClick={() => handleNavLinkClick(url)}>
+                            {name}
+                          </Link>
                         </li>
                       </CSSTransition>
                     ))}

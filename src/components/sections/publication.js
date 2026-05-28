@@ -163,6 +163,27 @@ const Publication = () => {
   const [rowsToShow, setRowsToShow] = useState(7); // Default to showing 7 rows
 
   useEffect(() => {
+    const showAllPublications = () => {
+      setRowsToShow(projects.length);
+    };
+
+    const showAllFromHash = () => {
+      if (window.location.hash === '#publication') {
+        showAllPublications();
+      }
+    };
+
+    showAllFromHash();
+    window.addEventListener('showAllPublications', showAllPublications);
+    window.addEventListener('hashchange', showAllFromHash);
+
+    return () => {
+      window.removeEventListener('showAllPublications', showAllPublications);
+      window.removeEventListener('hashchange', showAllFromHash);
+    };
+  }, [projects.length]);
+
+  useEffect(() => {
     if (prefersReducedMotion) {
       return;
     }
