@@ -190,8 +190,17 @@ const Hero = () => {
         </a>{' '}
         my research focuses on operational water intelligence, uncertainty-aware modeling, and
         deployable systems that move science from research into real-world decision-making. My work
-        has been recognized with the <span className="accent-highlight">2026 Nece Award</span> from
-        the University of Washington, given to department's{' '}
+        has been recognized with the{' '}
+        <span className="accent-highlight">
+          {' '}
+          <a
+            href="https://www.ce.washington.edu/news/article/2026-06-05/honors-awards#:~:text=Shahzaib%20Khan%20(CEE%20Ph.D.%20'26)%20received%20the%20Ronald%20and%20Mary%20Nece%20Endowed%20Fellowship"
+            target="_blank"
+            rel="noreferrer">
+            2026 Mary and Ronald Nece Award
+          </a>
+        </span>{' '}
+        from the University of Washington, given to department's{' '}
         <span className="accent-highlight">best doctoral students</span>.
       </p>
     </>
