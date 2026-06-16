@@ -89,6 +89,11 @@ const StyledTableContainer = styled.div`
         font-size: var(--fz-md);
         font-weight: 100;
         line-height: 1.25;
+
+        strong {
+          color: var(--white);
+          font-weight: 700;
+        }
       }
 
       &.company {
