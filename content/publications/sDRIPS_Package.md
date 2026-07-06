@@ -5,5 +5,3 @@ github: 'https://github.com/UW-SASWE/sDRIPS'
 external: 'https://pypi.org/project/sdrips'
 showInProjects: false
 ---
-
-';
