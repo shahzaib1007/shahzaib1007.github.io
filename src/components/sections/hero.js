@@ -91,6 +91,21 @@ const StyledHeroSection = styled.section`
   p {
     margin: 20px 0 0;
     max-width: 540px;
+
+    a {
+      display: inline;
+      text-decoration: none;
+
+      &:after {
+        display: none;
+      }
+
+      &:hover,
+      &:focus-visible {
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+      }
+    }
   }
 
   .email-link {
@@ -183,16 +198,16 @@ const Hero = () => {
       <p>
         I build satellite-driven decision-support systems for water, climate, agriculture, and
         environmental management. My work turns Earth observation, climate data, and geospatial
-        modeling into scalable tools used by stakeholders across multiple countries. As a Ph.D.
-        candidate at the University of Washington’s{' '}
+        modeling into scalable tools used by stakeholders across multiple countries. I recently
+        completed my Ph.D. in Civil and Environmental Engineering, with a Data Science Option, at
+        the University of Washington, where I conducted research in the{' '}
         <a href="https://saswe.net/" target="_blank" rel="noreferrer">
-          SASWE Lab
+          SASWE Lab.
         </a>{' '}
-        my research focuses on operational water intelligence, uncertainty-aware modeling, and
-        deployable systems that move science from research into real-world decision-making. My work
-        has been recognized with the{' '}
+        My research focuses on operational water intelligence, uncertainty-aware modeling, and
+        deployable systems that move science from research into real-world decision-making. My
+        doctoral work has been recognized with the{' '}
         <span className="accent-highlight">
-          {' '}
           <a
             href="https://www.ce.washington.edu/news/article/2026-06-05/honors-awards#:~:text=Shahzaib%20Khan%20(CEE%20Ph.D.%20'26)%20received%20the%20Ronald%20and%20Mary%20Nece%20Endowed%20Fellowship"
             target="_blank"
