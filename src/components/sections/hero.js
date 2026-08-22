@@ -6,8 +6,8 @@ import { usePrefersReducedMotion } from '@hooks';
 // import { Typewriter } from 'react-simple-typewriter';
 
 const PROFESSIONAL_TITLES = [
-  'Earth Data Scientist',
   'Hydrologist',
+  'Earth Data Scientist',
   'Remote Sensing Engineer',
   'Algorithm Developer',
 ];
@@ -196,27 +196,32 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I build satellite-driven decision-support systems for water, climate, agriculture, and
-        environmental management. My work turns Earth observation, climate data, and geospatial
-        modeling into scalable tools used by stakeholders across multiple countries. I recently
-        completed my Ph.D. in Civil and Environmental Engineering, with a Data Science Option, at
-        the University of Washington, where I conducted research in the{' '}
+        I build <strong>satellite and model-driven decision-support systems</strong> for water,
+        climate, agriculture, and environmental management, combining Earth observations, climate
+        data, and geospatial modeling into scalable tools for real-world decision-making. My work
+        focuses on operational water intelligence, uncertainty-aware modeling, and deployable
+        systems that move science from research into use by stakeholders across multiple countries.
+      </p>
+
+      <p>
+        I hold a Ph.D. in{' '}
+        <strong>Civil & Environmental Engineering, with a minor in Data Science</strong>, from the
+        University of Washington, where I conducted research in the{' '}
         <a href="https://saswe.net/" target="_blank" rel="noreferrer">
-          SASWE Lab.
-        </a>{' '}
-        My research focuses on operational water intelligence, uncertainty-aware modeling, and
-        deployable systems that move science from research into real-world decision-making. My
-        doctoral work has been recognized with the{' '}
+          SASWE Lab
+        </a>
+        . My doctoral work was recognized with the{' '}
         <span className="accent-highlight">
           <a
             href="https://www.ce.washington.edu/news/article/2026-06-05/honors-awards#:~:text=Shahzaib%20Khan%20(CEE%20Ph.D.%20'26)%20received%20the%20Ronald%20and%20Mary%20Nece%20Endowed%20Fellowship"
             target="_blank"
             rel="noreferrer">
-            2026 Mary and Ronald Nece Award
+            2026 Ronald and Mary Nece Endowed Fellowship
           </a>
-        </span>{' '}
-        from the University of Washington, given to department's{' '}
-        <span className="accent-highlight">best doctoral students</span>.
+        </span>
+        , awarded annually to a{' '}
+        <strong>top Ph.D. student in UW&apos;s Hydrology &amp; Hydrodynamics program</strong>
+        based on dissertation, scholarship, and academic performance.
       </p>
     </>
   );
