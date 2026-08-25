@@ -220,7 +220,7 @@ const Hero = () => {
           </a>
         </span>
         , awarded annually to a{' '}
-        <strong>top Ph.D. student in UW&apos;s Hydrology &amp; Hydrodynamics program</strong>
+        <strong>top Ph.D. student in UW&apos;s Hydrology &amp; Hydrodynamics program </strong>
         based on dissertation, scholarship, and academic performance.
       </p>
     </>

@@ -165,7 +165,7 @@ const Publication = () => {
   const revealTable = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
-  const [rowsToShow, setRowsToShow] = useState(7); // Default to showing 7 rows
+  const [rowsToShow, setRowsToShow] = useState(projects.length); // Default to showing 7 rows
 
   useEffect(() => {
     const showAllPublications = () => {
