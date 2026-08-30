@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { email } from '@config';
+import { email, emailRecipient, contactMessage } from '@config';
 import { Side } from '@components';
 
 const StyledLinkWrapper = styled.div`
@@ -36,9 +36,7 @@ const StyledLinkWrapper = styled.div`
 `;
 
 const Email = ({ isHome }) => {
-  const emailBody =
-    'Hi there,\n\nI\'m glad you stopped by! To prevent bots from spamming my inbox, I\'ve added \'[AT]\' to my email address. Please replace \'[AT]\' with \'@\' when contacting me.\n\nLooking forward to hearing from you!';
-  const mailtoLink = `mailto:${email}?body=${encodeURIComponent(emailBody)}`;
+  const mailtoLink = `mailto:${emailRecipient}?body=${encodeURIComponent(contactMessage)}`;
 
   return (
     <Side isHome={isHome} orientation="right">

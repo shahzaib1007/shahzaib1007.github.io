@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { srConfig, email } from '@config';
+import { srConfig, emailRecipient, contactMessage } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
@@ -44,6 +44,7 @@ const StyledContactSection = styled.section`
 const Contact = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const mailtoLink = `mailto:${emailRecipient}?body=${encodeURIComponent(contactMessage)}`;
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -59,13 +60,9 @@ const Contact = () => {
 
       <h2 className="title">Get In Touch</h2>
 
-      <p>
-        As a researcher, I value collaboration and the exchange of knowledge. My inbox is always
-        open for questions, insights, or just a friendly hello. I’ll do my best to respond as
-        quickly as possible!
-      </p>
+      <p>{contactMessage}</p>
 
-      <a className="email-link" href={`mailto:${email}`}>
+      <a className="email-link" href={mailtoLink}>
         Say Hello
       </a>
     </StyledContactSection>

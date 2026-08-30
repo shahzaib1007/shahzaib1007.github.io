@@ -325,11 +325,11 @@ const Research = () => {
     <StyledResearchSection id="research" ref={revealContainer}>
       <h2 className="numbered-heading">My Vision</h2>
       <p className="vision-text">
-        Imagine a world where water cycle data is democratized, providing every
-        individual—regardless of background, nationality, or status—with equitable access to
-        actionable insights about water resources. This information empowers people to make informed
-        decisions, manage resources sustainably, and contribute to a balanced future for generations
-        and nature. Equity-based access to water resources isn’t just essential for individual
+        Imagine a world where water cycle data is democratized, providing every individual,
+        regardless of background, nationality, or status, with equitable access to actionable
+        insights about water resources. This information empowers people to make informed decisions,
+        manage resources sustainably, and contribute to a balanced future for generations and
+        nature. Equity-based access to water resources isn’t just essential for individual
         well-being; it is critical for a nation's prosperity and sustainability. Water, as a
         resource, has the power to unite or divide, and its fair management is key to preventing
         conflict and fostering harmony (

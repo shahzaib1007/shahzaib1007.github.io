@@ -1,5 +1,8 @@
 module.exports = {
   email: 'khan.shahzaib1007[AT]gmail.com',
+  emailRecipient: 'khan.shahzaib1007@gmail.com',
+  contactMessage:
+    'As a researcher, I value collaboration and the exchange of knowledge. My inbox is always open for questions, insights, or just a friendly hello. I\'ll do my best to respond as quickly as possible!',
 
   socialMedia: [
     {
