@@ -345,7 +345,17 @@ const Research = () => {
           }}>
           see this video
         </span>
-        ). This is the vision I tirelessly pursue, striving step by step to turn it into reality.
+        ). One such example is the satellite-based irrigation advisory system I developed in
+        Bangladesh, which reached <strong>hundreds of thousands of farmers</strong> with actionable
+        water-management information and was later{' '}
+        <a
+          href="https://www.nasa.gov/centers-and-facilities/goddard/nasa-data-helps-bangladeshi-farmers-save-water-money-energy/#:~:text=When%20I%20see%20my%20work,that%20is%20beyond%20words."
+          target="_blank"
+          rel="noreferrer">
+          featured by NASA
+        </a>{' '}
+        for its real-world impact. This is the vision I tirelessly pursue, striving step by step to
+        turn it into reality.
       </p>
       {isVideoVisible && (
         <div className="video-container">
